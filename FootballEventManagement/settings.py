@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'team',
     'south',
     'result',
+    'notice',
 )
 
 LOGGING_OUTPUT_ENABLED = True
