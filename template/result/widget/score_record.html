@@ -1,0 +1,44 @@
+<div class="score_header">
+    <h2 class="score_show">
+        {{match.teamA_score}} vs {{match.teamB_score}}
+    </h2>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th class="span6">{{match.teamA}}</th>
+            <th class="span6">{{match.teamB}}</th>
+        </tr>
+        {% for A_score,B_score in scores %}
+        <tr>
+            <td>{{A_score.player}} &nbsp {{A_score.number}}</td>
+            <td>{{B_score.player}} &nbsp {{B_score.number}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <button class="btn score-add-btn" mid="{{match.id}}" iid="{{match.teamA.id}}">+</button>
+            </td>
+            <td>
+                <button class="btn score-add-btn" mid="{{match.id}}" iid="{{match.teamB.id}}">+</button>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <form class="form-inline hidden" id="score-add-form" method="POST">
+        {% csrf_token %}
+        <center>
+            <div class="control-group">
+                <label for="">{{form.player.label}}</label>
+                {{form.player}}
+            </div>
+            <div class="control-group">
+                {{form.match}}
+            </div>
+            <div class="control-group">
+                <label for="">{{form.number.label}}</label>
+                {{form.number}}
+            </div>
+            <button type="button" class="btn btn-primary score-save" id="score-save">增加</button>
+        </center>
+    </form>
+</div>

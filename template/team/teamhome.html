@@ -1,0 +1,37 @@
+{% extends "team/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>球队列表</h2>
+    </div>
+    <div class="content">
+        <div class="event-operate">
+            <button class="event-add-btn btn btn-primary" data-toggle="modal" data-target="#add-team-modal">
+                添加球队
+            </button>
+        </div>
+        <br>
+        <div class="team-table">
+            {% include "team/widget/team_list.html" %}
+        </div>
+        <div class="modal fade" id="add-team-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加球队</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% include "team/widget/team_add_form.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="team-save" data-dismiss="modal">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/team.js"></script> 
+{% endblock%}

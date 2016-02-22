@@ -1,0 +1,28 @@
+<form class="form-inline" id="player-add-form" method="POST">
+    {% csrf_token %}
+    <center>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.name.label}}</button>
+            {{form.name}}
+        </div>
+        <div class="control-group">
+            {{form.team}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.phone.label}}</button>
+            {{form.phone}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.email.label}}</button>
+            {{form.email}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.age.label}}</button>
+            {{form.age}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.number.label}}</button>
+            {{form.number}}
+        </div>
+    </center>
+</form>

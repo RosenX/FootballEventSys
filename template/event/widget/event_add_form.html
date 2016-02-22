@@ -1,0 +1,21 @@
+<form class="form-inline" id="event-add-form" method="POST">
+    {% csrf_token %}
+    <center>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.event_name.label}}</button>
+            {{form.event_name}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.start_time.label}}</button>
+            {{form.start_time}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.end_time.label}}</button>
+            {{form.end_time}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{form.place.label}}</button>
+            {{form.place}}
+        </div>
+    </center>
+</form>

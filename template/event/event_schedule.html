@@ -1,0 +1,18 @@
+{% extends "event/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>{{event.event_name}}赛程安排</h2>
+    </div>
+    <div class="content">
+        {% ifequal statu 0 %}
+        <div class="round-operate">
+            <button class="new-round btn btn-primary" iid={{event.id}}>新一轮</button>
+        </div>
+        {% endifequal %}
+        <div class="event-schedule-table">
+            {% include "event/widget/rounds_matchs_table.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

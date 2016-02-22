@@ -1,0 +1,37 @@
+{% extends "event/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>赛事列表</h2>
+    </div>
+    <div class="content">
+        <div class="event-operate">
+            <button class="event-add-btn btn btn-primary" data-toggle="modal" data-target="#add-event-modal">
+                添加比赛
+            </button>
+        </div>
+        <br>
+        <div class="event-table">
+            {% include "event/widget/event_list.html" %}
+        </div>
+        <div class="modal fade" id="add-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">创建赛事</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% include "event/widget/event_add_form.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="event-save" data-dismiss="modal">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,28 @@
+<form class="form-inline" id="member-add-form" method="POST">
+    {% csrf_token %}
+    <center>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{member_form.name.label}}</button>
+            {{member_form.name}}
+        </div>
+        <div class="control-group">
+            {{member_form.team}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{member_form.phone.label}}</button>
+            {{member_form.phone}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{member_form.email.label}}</button>
+            {{member_form.email}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{member_form.age.label}}</button>
+            {{member_form.age}}
+        </div>
+        <div class="control-group">
+            <button type="button" class="btn btn-default">{{member_form.title.label}}</button>
+            {{member_form.title}}
+        </div>
+    </center>
+</form>

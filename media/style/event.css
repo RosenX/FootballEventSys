@@ -1,0 +1,21 @@
+h2{
+    text-align: center;
+}
+
+.round-title{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.round-operate{
+    margin-bottom: 10px;
+}
+
+.each-round{
+    margin-bottom: 30px;
+}
+
+.round-head{
+    margin-bottom: 5px;
+}

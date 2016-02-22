@@ -1,0 +1,45 @@
+{%for r,matches in rounds_matchs%}
+    <div class="each-round">
+        <center class="round-head">
+            <span class="round-title">第{{forloop.counter}}轮</span>
+        </center>
+        <table class="matchs-list table table-bordered table-striped">
+            <tr>
+                <th class="span4">参赛队</th>
+                <th class="span4">比赛时间</th>
+                <th class="span4">裁判</th>
+            </tr>
+            {%for match in matches%}
+                <tr>
+                    <td class="span4">{{match.teamA}} vs {{match.teamB}}</td>
+                    <td class="span4">{{match.date|date:"Y-m-d"}}</td>
+                    <td class="span4">{{match.referee}}</td>
+                </tr>
+            {%endfor%}
+        </table>
+        {% ifequal statu 0 %}
+        <center>
+            <button class="new-match btn btn-success" iid="{{r.id}}" data-toggle="modal" data-target="#add-match-modal">    新一场
+            </button>
+        </center>
+        {% endifequal %}
+    </div>
+{%endfor%}
+
+<div class="modal fade" id="add-match-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">创建比赛</h4>
+            </div>
+        </div>
+        <div class="modal-body">
+            {% include "event/widget/match_add_form.html" %}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" id="match-save" data-dismiss="modal">创建</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<table class="player-list table table-bordered table-striped">
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>号码</th>
+        <th>手机</th>
+    </tr>
+    {% for p in player_list %}
+        <tr>
+            <td>{{p.name}}</td>
+            <td>{{p.age}}</td>
+            <td>{{p.number}}</td>
+            <td>{{p.phone}}</td>
+        </tr>
+    {% endfor %}    
+</table>

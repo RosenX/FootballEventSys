@@ -1,0 +1,17 @@
+{% extends "base/_base.html"%}
+{% block before_css%}
+    {{block.super}}
+{%endblock%}
+
+{% block RESULT_ACTICVE %}active{% endblock %}
+
+{% block main_title %}
+{%endblock%}
+
+{% block main_content%}
+<div class="main-content">
+    <link rel="stylesheet" href="{{STATIC_URL}}style/result.css">
+    {% block outter_content%}{%endblock%}
+    <script type="text/javascript" src="{{STATIC_URL}}js/result.js"></script> 
+</div>
+{% endblock%}

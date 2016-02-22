@@ -1,0 +1,28 @@
+<table class="event-list table table-bordered table-striped">
+    <tr>
+        <th>赛事名称</th>
+        <th>地点</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>操作</th>
+    </tr>
+    {% for event,statu in event_list %}
+        <tr>
+            <td>{{event.event_name}}</td>
+            <td>{{event.place}}</td>
+            <td>{{event.start_time|date:"Y-m-d"}}</td>
+            <td>{{event.end_time|date:"Y-m-d"}}</td>
+            <td>
+                {% ifequal statu 0 %}
+                    <a href="/event/{{event.id}}" class="btn arrange-schedule btn-primary">安排赛程</a>
+                {% endifequal %}
+                {% ifequal statu 1 %}
+                    <a href="/event/{{event.id}}" class="btn arrange-schedule btn-primary">查看赛程</a>
+                {% endifequal %}
+                {% ifequal statu 2 %}
+                    <button class="btn check-result btn-primary">查看结果</button>
+                {% endifequal %}
+            </td>
+        </tr>
+    {% endfor %}    
+</table>

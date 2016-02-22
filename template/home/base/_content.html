@@ -1,0 +1,16 @@
+{% extends "base/_base.html"%}
+{% block before_css%}
+{{block.super}}
+{%endblock%}
+{% block HOME_ACTIVE %}
+active
+{% endblock %}
+
+{% block main_title %}
+{%endblock%}
+
+{% block main_content%}
+ <div class="main-content">
+    {% block outter_content%}{%endblock%}
+</div> 
+{% endblock%}

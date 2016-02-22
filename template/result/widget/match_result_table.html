@@ -1,0 +1,57 @@
+{%for r,matches in rounds_matchs%}
+    <div class="each-round">
+        <center class="round-head">
+            <span class="round-title">第{{forloop.counter}}轮</span>
+        </center>
+        <table class="matchs-list table table-bordered table-striped">
+            <tr>
+                <th class="span2">参赛队</th>
+                <th class="span2">比赛时间</th>
+                <th class="span2">裁判</th>
+                <th class="span2">比分</th>
+                <th class="span2">修改比分</th>
+                <th class="span2">红黄牌</th>
+            </tr>
+            {%for match in matches%}
+                <tr>
+                    <td class="span4">{{match.teamA}} vs {{match.teamB}}</td>
+                    <td class="span4">{{match.date|date:"Y-m-d"}}</td>
+                    <td class="span4">{{match.referee}}</td>
+                    <td class="span4">{{match.teamA_score}} : {{match.teamB_score}}</td>
+                    <td class="span4">
+                        <button class="score-record-btn btn btn-primary" iid="{{match.id}}" data-toggle="modal" data-target ="#score-record-modal">
+                            进球记录
+                        </button>
+                    </td>
+                    <td class="span4">
+                        <button class="btn btn-primary">红黄牌记录</button>
+                    </td>
+                </tr>
+            {%endfor%}
+        </table>
+        <div class="modal fade" id="score-record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">进球记录</h4>
+                    </div>
+                    <div class="modal-body match-record-table">
+                        {% include "result/widget/score_record.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% ifequal statu 0 %}
+        <center>
+            <button class="new-match btn btn-success" iid="{{r.id}}" data-toggle="modal" data-target="#add-match-modal">    新一场
+            </button>
+        </center>
+        {% endifequal %}
+    </div>
+{%endfor%}

@@ -1,0 +1,11 @@
+{% extends "result/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>{{event.event_name}}</h2>
+    </div>
+    <div class="event-table">
+        {% include "result/widget/match_result_table.html" %}
+    </div>
+</div>
+{% endblock%}
