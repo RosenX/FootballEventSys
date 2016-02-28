@@ -32,8 +32,8 @@ class SingleMatch(models.Model):
 	date = models.DateField(verbose_name=u'日期',blank=False,null=False)
 	round_belong = models.ForeignKey(Schedule,verbose_name=u'哪一轮',blank=False,null=False)
 	referee = models.CharField(verbose_name=u'裁判',blank=True,null=True,max_length=30)
-	teamA_score = models.IntegerField(verbose_name=u"A队得分",default=0)
-	teamB_score = models.IntegerField(verbose_name=u"B队得分",default=0)
+	teamA_score = models.IntegerField(verbose_name=u"A队得分",default=0,blank=True,null=False)
+	teamB_score = models.IntegerField(verbose_name=u"B队得分",default=0,blank=True,null=False)
 
 	class Meta:
 		verbose_name = u'单场比赛'

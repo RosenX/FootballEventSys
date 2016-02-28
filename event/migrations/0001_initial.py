@@ -14,6 +14,7 @@ class Migration(SchemaMigration):
             ('event_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('start_time', self.gf('django.db.models.fields.DateField')()),
             ('end_time', self.gf('django.db.models.fields.DateField')()),
+            ('place', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal('event', ['Event'])
 
@@ -32,6 +33,9 @@ class Migration(SchemaMigration):
             ('teamB', self.gf('django.db.models.fields.related.ForeignKey')(related_name='B_team', to=orm['team.Team'])),
             ('date', self.gf('django.db.models.fields.DateField')()),
             ('round_belong', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['event.Schedule'])),
+            ('referee', self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True)),
+            ('teamA_score', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('teamB_score', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
         db.send_create_signal('event', ['SingleMatch'])
 
@@ -53,6 +57,7 @@ class Migration(SchemaMigration):
             'end_time': ('django.db.models.fields.DateField', [], {}),
             'event_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'place': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'start_time': ('django.db.models.fields.DateField', [], {})
         },
         'event.schedule': {
@@ -65,12 +70,16 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'SingleMatch'},
             'date': ('django.db.models.fields.DateField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'referee': ('django.db.models.fields.CharField', [], {'max_length': '30', 'null': 'True', 'blank': 'True'}),
             'round_belong': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['event.Schedule']"}),
             'teamA': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'A_team'", 'to': "orm['team.Team']"}),
-            'teamB': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'B_team'", 'to': "orm['team.Team']"})
+            'teamA_score': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'teamB': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'B_team'", 'to': "orm['team.Team']"}),
+            'teamB_score': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         'team.team': {
             'Meta': {'object_name': 'Team'},
+            'club': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'team_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'})
         }

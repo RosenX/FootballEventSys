@@ -17,6 +17,7 @@ class EventAddForm(ModelForm):
 class MatchAddForm(ModelForm):
     class Meta:
         model = SingleMatch
+        exclude = ['teamA_score','teamB_score']
         widgets = {
             "teamA":forms.Select(attrs={'class':'form-control','label':"队1"}),
             "teamB":forms.Select(attrs={'class':'form-control','label':"队2"}),

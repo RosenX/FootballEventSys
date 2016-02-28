@@ -36,12 +36,16 @@ def getMatch(request,matchId):
     return simplejson.dumps(context)
 
 @dajaxice_register
-def addScore(request,form,matchId):
+def addScore(request,form,matchId,which_team):
     form = ScoreAddForm(deserialize_form(form))
     context={}
     if form.is_valid():
         form.save()
+        number = int(form.cleaned_data["number"])
         match = SingleMatch.objects.get(id=matchId)
+        if which_team == 'A':match.teamA_score += number
+        if which_team == 'B':match.teamB_score += number
+        match.save()
         scores = getScores(request,match)
         form = ScoreAddForm()
         match_score_table = render_to_string("result/widget/score_record.html",{

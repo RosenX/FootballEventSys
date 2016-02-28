@@ -7,17 +7,25 @@ $(document).ready(function(){
 
 $(document).on("click",".score-add-btn",function(){
     match_id = $(this).attr("mid");
+    team_id = $(this).attr("iid");
     $("#id_match").val(match_id);
     $("#score-add-form").removeClass("hidden");
+    $("#score-save").attr("iid",team_id);
 });
 
 $(document).on("click",".score-save",function(){
     $("#score-add-form").addClass("hidden");
     form = $("#score-add-form").serialize(true);
-    alert(form);
     match_id =$(".score-record-btn").attr("iid");
-    Dajaxice.result.addScore(addScore_callback,{'form':form,'matchId':match_id});
+    which_team = $(this).attr("iid");
+    Dajaxice.result.addScore(addScore_callback,{'form':form,'matchId':match_id,"which_team":which_team});
 });
+
+$(document).on("click",".score-modal-close",function(){
+    location.reload();
+});
+
+score-modal-close
 
 function addScore_callback(data){
     if(data["statu"]==0){

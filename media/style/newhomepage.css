@@ -27,6 +27,11 @@ a, h1, h2, h3 {
     border: 1px solid #eaeaea; 
     /*border: 0px solid #eaeaea;*/
 }
+.ing-event-choice{
+    background-color: #fff;
+    margin-bottom: 5px;
+    padding: 10px;   
+}
 
 .home-news {
     margin-left: -10px;
