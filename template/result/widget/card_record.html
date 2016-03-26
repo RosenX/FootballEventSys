@@ -1,0 +1,73 @@
+<div class="cards_header">
+    <h3 class="red_cards_title">
+        红牌
+        <button type="button" class="btn red-add-btn" mid="{{match.id}}">增加</button>
+    </h3>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th class="span4">球员</th>
+            <th class="span4">球队</th>
+            <th class="span4">原因</th>
+        </tr>
+        {% for red_card in red_card_list %}
+        <tr>
+            <td>{{red_card.player.name}}</td>
+            <td>{{red_card.player.team.team_name}}</td>
+            <td>{{red_card.reason}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h3 class="red_cards_title">
+        黄牌
+        <button type="button" class="btn yellow-add-btn" mid="{{match.id}}">增加</button>
+    </h3>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th class="span4">球员</th>
+            <th class="span4">球队</th>
+            <th class="span4">原因</th>
+        </tr>
+        {% for yellow_card in yellow_card_list %}
+        <tr>
+            <td>{{yellow_card.player.name}}</td>
+            <td>{{yellow_card.player.team.team_name}}</td>
+            <td>{{yellow_card.reason}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form class="form-inline hidden" id="red-add-form" method="POST">
+        {% csrf_token %}
+        <center>
+            <div class="control-group">
+                <label for="">{{red_form.player.label}}</label>
+                {{red_form.player}}
+            </div>
+            <div class="control-group">
+                {{red_form.match}}
+            </div>
+            <div class="control-group">
+                <label for="">{{red_form.reason.label}}</label>
+                {{red_form.reason}}
+            </div>
+            <button type="button" class="btn btn-primary red-add-save" id="red-add-save">增加红牌</button>
+        </center>
+    </form>
+    <form class="form-inline hidden" id="yellow-add-form" method="POST">
+        {% csrf_token %}
+        <center>
+            <div class="control-group">
+                <label for="">{{yellow_form.player.label}}</label>
+                {{yellow_form.player}}
+            </div>
+            <div class="control-group">
+                {{yellow_form.match}}
+            </div>
+            <div class="control-group">
+                <label for="">{{yellow_form.reason.label}}</label>
+                {{yellow_form.reason}}
+            </div>
+            <button type="button" class="btn btn-primary yellow-add-save" id="yellow-add-save">增加黄牌</button>
+        </center>
+    </form>
+</div>

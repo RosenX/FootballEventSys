@@ -24,7 +24,7 @@ class Schedule(models.Model):
 		verbose_name_plural = u'轮'
 
 	def __unicode__(self):
-		return '%s第%s轮'%(self.event,self.round_number)
+		return u'%s第%s轮'%(self.event,self.round_number)
 
 class SingleMatch(models.Model):
 	teamA = models.ForeignKey(Team,verbose_name=u'A队',related_name='A_team')
@@ -40,6 +40,3 @@ class SingleMatch(models.Model):
 		verbose_name_plural = u'单场比赛'
 	def __unicode__(self):
 		return "%s vs %s,%s"%(self.teamA,self.teamB,self.date)
-
-
-

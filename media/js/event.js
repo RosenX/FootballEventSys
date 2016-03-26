@@ -28,6 +28,7 @@ function addNewMatch_callback(data){
     else{
         $(".event-schedule-table").html(data["html"]);
     }
+    location.reload()
 }
 
 function addNewRound_callback(data){
@@ -37,6 +38,7 @@ function addNewRound_callback(data){
     else{
         $(".event-schedule-table").html(data["html"]);
     }
+    location.reload()
 }
 
 function addEvent_callback(data){

@@ -3,7 +3,17 @@ $(document).ready(function(){
         match_id = $(this).attr("iid");
         Dajaxice.result.getMatch(getMatch_callback,{"matchId":match_id});
     });
+
 });
+
+$(document).on("click",".card-record-btn",function(){
+    match_id = $(this).attr("iid");
+    Dajaxice.result.getCards(getCards_callback,{'matchId':match_id});
+});
+
+function getCards_callback(data){
+    $(".cards-record-table").html(data["html"]);
+}
 
 $(document).on("click",".score-add-btn",function(){
     match_id = $(this).attr("mid");
@@ -11,6 +21,18 @@ $(document).on("click",".score-add-btn",function(){
     $("#id_match").val(match_id);
     $("#score-add-form").removeClass("hidden");
     $("#score-save").attr("iid",team_id);
+});
+
+$(document).on("click",".red-add-btn",function(){
+    match_id = $(this).attr("mid");
+    $("#red-add-form #id_match").val(match_id);
+    $("#red-add-form").removeClass("hidden");
+});
+
+$(document).on("click",".yellow-add-btn",function(){
+    match_id = $(this).attr("mid");
+    $("#yellow-add-form #id_match").val(match_id);
+    $("#yellow-add-form").removeClass("hidden");
 });
 
 $(document).on("click",".score-save",function(){
@@ -25,17 +47,41 @@ $(document).on("click",".score-modal-close",function(){
     location.reload();
 });
 
-score-modal-close
-
 function addScore_callback(data){
     if(data["statu"]==0){
         alert("something wrong");
     }
     else{
-        $(".match-record-table").html(data["html"]);
+        $(".score-record-table").html(data["html"]);
     }
 }
 
 function getMatch_callback(data){
-    $(".match-record-table").html(data["html"]);
+    $(".score-record-table").html(data["html"]);
+}
+
+$(document).on("click","#red-add-save",function(){
+    $("#red-add-form").addClass("hidden");
+    form = $("#red-add-form").serialize(true);
+    Dajaxice.result.addRedCard(addRedCard_callback,{'form':form});
+});
+
+function addRedCard_callback(data){
+    if(data["statu"] == 0)alert("something wrong");
+    else{
+        $(".cards-record-table").html(data["html"]);
+    }
+}
+
+$(document).on("click","#yellow-add-save",function(){
+    $("#yellow-add-form").addClass("hidden");
+    form = $("#yellow-add-form").serialize(true);
+    Dajaxice.result.addYellowCard(addYellowCard_callback,{'form':form});
+});
+
+function addYellowCard_callback(data){
+    if(data["statu"] == 0)alert("something wrong");
+    else{
+        $(".cards-record-table").html(data["html"]);
+    }
 }

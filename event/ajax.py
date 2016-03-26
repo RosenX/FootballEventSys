@@ -17,8 +17,8 @@ def addEvent(request,form):
         events = getEvents(request)
         event_list_table = render_to_string("event/widget/event_list.html",{"event_list":events})
         context["html"]= event_list_table
-        context["statu"]=SUCCESS 
-    else: 
+        context["statu"]=SUCCESS
+    else:
         context["statu"]=ERROR
     return simplejson.dumps(context)
 
@@ -27,6 +27,10 @@ def addNewRound(request,event_id):
     form =MatchAddForm()
     event = Event.objects.get(id=event_id)
     new_round = Schedule(event=event)
+
+    round_number = len(Schedule.objects.filter(event = event))+1
+    new_round.round_number = round_number
+
     statu = judgeStatu(request,event)
     context={}
     try:
@@ -56,8 +60,7 @@ def addNewMatch(request,form,event_id):
                                                 {"rounds_matchs":rounds_matchs,'form':form,"statu":statu})
         context["statu"]=SUCCESS
         context["html"]=rounds_matchs_table
-    else: 
+    else:
         print form.errors
         context["statu"]=ERROR
     return simplejson.dumps(context)
-

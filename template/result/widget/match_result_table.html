@@ -19,12 +19,16 @@
                     <td class="span4">{{match.referee}}</td>
                     <td class="span4">{{match.teamA_score}} : {{match.teamB_score}}</td>
                     <td class="span4">
-                        <button class="score-record-btn btn btn-primary" iid="{{match.id}}" data-toggle="modal" data-target ="#score-record-modal">
+                        <button class="score-record-btn btn btn-primary" iid="{{match.id}}"
+                                data-toggle="modal" data-target ="#score-record-modal">
                             进球记录
                         </button>
                     </td>
                     <td class="span4">
-                        <button class="btn btn-primary">红黄牌记录</button>
+                        <button class="card-record-btn btn btn-primary" iid="{{match.id}}"
+                                data-toggle="modal" data-target ="#card-record-modal">
+                            红黄牌记录
+                        </button>
                     </td>
                 </tr>
             {%endfor%}
@@ -38,11 +42,29 @@
                         </button>
                         <h4 class="modal-title" id="myModalLabel">进球记录</h4>
                     </div>
-                    <div class="modal-body match-record-table">
+                    <div class="modal-body score-record-table">
                         {% include "result/widget/score_record.html" %}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default score-modal-close" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="card-record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">红黄牌记录</h4>
+                    </div>
+                    <div class="modal-body cards-record-table">
+                        {% include "result/widget/card_record.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default card-modal-close" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
