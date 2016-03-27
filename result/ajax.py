@@ -46,6 +46,7 @@ def getMatch(request,matchId):
 
 @dajaxice_register
 def addScore(request,form,matchId,which_team):
+    print matchId
     form = ScoreAddForm(deserialize_form(form))
     context={}
     if form.is_valid():

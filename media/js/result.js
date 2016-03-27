@@ -18,7 +18,7 @@ function getCards_callback(data){
 $(document).on("click",".score-add-btn",function(){
     match_id = $(this).attr("mid");
     team_id = $(this).attr("iid");
-    $("#id_match").val(match_id);
+    $("#score-add-form #id_match").val(match_id);
     $("#score-add-form").removeClass("hidden");
     $("#score-save").attr("iid",team_id);
 });
@@ -38,7 +38,7 @@ $(document).on("click",".yellow-add-btn",function(){
 $(document).on("click",".score-save",function(){
     $("#score-add-form").addClass("hidden");
     form = $("#score-add-form").serialize(true);
-    match_id =$(".score-record-btn").attr("iid");
+    match_id =$("#score-add-form #id_match").val();
     which_team = $(this).attr("iid");
     Dajaxice.result.addScore(addScore_callback,{'form':form,'matchId':match_id,"which_team":which_team});
 });
