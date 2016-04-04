@@ -1,11 +1,8 @@
 from django.contrib import admin
-from result.models  import *
+from notice.models  import *
 
 RegisterClass = (
-    Score,
-    RedCard,
-    YellowCard,
-    SumScore,
+    Notice,
 )
 for item in RegisterClass:
     admin.site.register(item)

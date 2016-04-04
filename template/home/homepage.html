@@ -3,27 +3,28 @@
 <link rel="stylesheet" href="{{STATIC_URL}}style/newhomepage.css" type="text/css" media="screen" />
 <div class="outter_frame">
   <div class="ing-event-choice form-inline">
-      <span>正在进行的比赛 :</span>
+      <span>进行中或结束的比赛 :</span>
       <select class="control-group ing-event-select">
+          <option value=0></option>
           {% for event in events %}
               <option value ="{{event.id}}">{{event.event_name}}</option>
           {% endfor %}
         </select>
   </div>
   <div class="row-fluid news_frame">
-    <div class="span6">
+    <div class="span6 notice-content">
       {% include "home/widgets/notice.html" %}
     </div>
-    <div class="span6">
+    <div class="span6 score-rank-content">
       {% include "home/widgets/score_rank.html" %}
     </div>
   </div>
   <hr>
   <div class="row-fluid news_frame">
-    <div class="span6">
+    <div class="span6 round-score-content">
       {% include "home/widgets/round_score.html" %}
     </div>
-    <div class="span6">
+    <div class="span6 top-scorer-content">
       {% include "home/widgets/top_scorer.html" %}
     </div>
   </div>

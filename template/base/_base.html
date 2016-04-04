@@ -2,7 +2,7 @@
 {% block before_css%}
 {{block.super}}
 {%endblock%}
-{% block basepage%} 
+{% block basepage%}
 
 <div id="header">
     <span>足球赛事管理系统</span>
@@ -27,6 +27,9 @@
         </li>
         <li class="{% block RESULT_ACTICVE %}{% endblock %}">
             <a href="/result"><span>结果录入</span></a>
+        </li>
+        <li class="{% block NOTICE %}{% endblock %}">
+            <a href="/notice"><span>通知发布</span></a>
         </li>
     </ul>
 </div>

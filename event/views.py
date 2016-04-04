@@ -15,11 +15,14 @@ def eventView(request):
     }
     return render(request,"event/eventhome.html",context)
 
-def arrangeScheduleView(request,eventId):
+def checkResultView(request, eventId):
+    return ""
+
+def arrangeScheduleView(request, eventId):
     event = Event.objects.get(id=eventId)
     statu = judgeStatu(request,event)
     rounds_matchs = getRoundsAndMathchs(request,event)
-    form =MatchAddForm()
+    form = MatchAddForm()
     context ={
         "event":event,
         "form":form,

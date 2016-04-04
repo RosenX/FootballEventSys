@@ -1,0 +1,37 @@
+{% extends "notice/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>通知列表</h2>
+    </div>
+    <div class="content">
+        <div class="notice-operate">
+            <button class="notice-add-btn btn btn-primary" data-toggle="modal" data-target="#add-notice-modal">
+                发布通知
+            </button>
+        </div>
+        <br>
+        <div class="notice-table">
+            {% include "notice/widget/notice_list.html" %}
+        </div>
+        <div class="modal fade" id="add-notice-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">发布通知</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% include "notice/widget/notice_add_form.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="notice-save" data-dismiss="modal">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

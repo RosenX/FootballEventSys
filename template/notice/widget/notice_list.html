@@ -1,0 +1,16 @@
+<table class="notice-list table table-bordered table-striped">
+    <tr>
+        <th>标题</th>
+        <th>日期</th>
+        <th>操作</th>
+    </tr>
+    {% for notice in notice_list %}
+        <tr>
+            <td>{{notice.title}}</td>
+            <td>{{notice.date|date:"Y-m-d"}}</td>
+            <td>
+                <button class="notice-delete-btn btn btn-primary" iid = {{notice.id}}>删除</button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

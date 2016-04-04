@@ -1,0 +1,17 @@
+{% extends "base/_base.html"%}
+{% block before_css%}
+{{block.super}}
+{%endblock%}
+{% block NOTICE %}
+active
+{% endblock %}
+
+{% block main_title %}
+{%endblock%}
+
+{% block main_content%}
+ <div class="main-content">
+    {% block outter_content%}{%endblock%}
+    <script type="text/javascript" src="{{STATIC_URL}}js/notice.js"></script> 
+</div>
+{% endblock%}

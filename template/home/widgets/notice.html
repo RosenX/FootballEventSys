@@ -9,5 +9,11 @@ notice
 
 {% block news-list-items %}
 
-{% endblock %}
+{% for notice in notice_list %}
+    <div class="each-notice">
+        <a href="/notice/{{notice.id}}" class='notice-link'>{{notice.title}}</a>
+        <span>{{notice.date|date:"Y-m-d"}}</span>
+    </div>
+{% endfor %}
 
+{% endblock %}

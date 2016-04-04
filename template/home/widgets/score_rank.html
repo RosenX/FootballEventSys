@@ -9,5 +9,11 @@ scoreboard
 
 {% block news-list-items %}
 
-{% endblock %}
+{% for sumscore in sumscore_rank %}
+    <div class="team-score">
+        <span>{{sumscore.team.team_name}}</span>
+        <span>{{sumscore.sum_score}}</span>
+    </div>
+{% endfor %}
 
+{% endblock %}

@@ -42,7 +42,11 @@ urlpatterns = patterns('',
     url(
         r'^result/',
         include('result.urls')
-    )
+    ),
+    url(
+        r'^notice/',
+        include('notice.urls')
+    ),
 )
 
 urlpatterns += staticfiles_urlpatterns()

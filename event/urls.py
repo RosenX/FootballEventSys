@@ -10,6 +10,5 @@ urlpatterns = patterns('',
     url(
         r'^(?P<eventId>\d+)$',
         event_views.arrangeScheduleView
-    )
+    ),
 )
-

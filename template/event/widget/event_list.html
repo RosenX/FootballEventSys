@@ -20,9 +20,9 @@
                     <a href="/event/{{event.id}}" class="btn arrange-schedule btn-primary">查看赛程</a>
                 {% endifequal %}
                 {% ifequal statu 2 %}
-                    <button class="btn check-result btn-primary">查看结果</button>
+                    <a href="/event/{{event.id}}" class="btn arrange-schedule btn-primary">查看结果</a>
                 {% endifequal %}
             </td>
         </tr>
-    {% endfor %}    
+    {% endfor %}
 </table>
