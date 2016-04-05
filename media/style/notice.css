@@ -1,0 +1,21 @@
+.header h2{
+    text-align: center;
+}
+
+.date span{
+    text-align: center;
+    display: block;
+}
+
+#id_title{
+    width: 400px;
+}
+
+#id_content{
+    width: 400px;
+}
+
+.notice-content{
+    width: 800px;
+    margin: 50px auto;
+}

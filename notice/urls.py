@@ -7,4 +7,8 @@ urlpatterns = patterns('',
         r'^$',
         notice_views.noticeView
     ),
+    url(
+        r'^(?P<noticeId>\d+)$',
+        notice_views.showNoticeView,
+    )
 )

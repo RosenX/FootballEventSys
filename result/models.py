@@ -5,7 +5,7 @@ from event.models import SingleMatch,Event
 
 class Score(models.Model):
     player = models.ForeignKey(Player,verbose_name=u'球员',blank=False,null=False)
-    match =models.ForeignKey(SingleMatch,verbose_name=u'比赛',blank=False,null=False)
+    match = models.ForeignKey(SingleMatch,verbose_name=u'比赛',blank=False,null=False)
     number = models.IntegerField(verbose_name=u'个数',blank=False,null=False)
 
     class Meta:

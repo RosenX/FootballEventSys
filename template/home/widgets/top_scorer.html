@@ -8,6 +8,18 @@ Top Scorer
 {% endblock %}
 
 {% block news-list-items %}
-
+<table class="table">
+    {% for player, number in player_rank_list %}
+        {% ifequal forloop.counter 1 %}
+            <tr>
+                <th>球员</th>
+                <th>进球数</th>
+            </tr>
+        {% endifequal %}
+        <tr>
+            <td>{{player.name}}</td>
+            <td>{{number}}</td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}
-

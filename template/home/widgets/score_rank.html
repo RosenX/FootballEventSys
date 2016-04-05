@@ -9,11 +9,20 @@ scoreboard
 
 {% block news-list-items %}
 
-{% for sumscore in sumscore_rank %}
-    <div class="team-score">
-        <span>{{sumscore.team.team_name}}</span>
-        <span>{{sumscore.sum_score}}</span>
-    </div>
-{% endfor %}
+
+<table class="table">
+    {% for team, sumscore in sumscore_rank %}
+        {% ifequal forloop.counter 1 %}
+            <tr>
+                <th>球队</th>
+                <th>积分</th>
+            </tr>
+        {% endifequal %}
+        <tr>
+            <td>{{team.team_name}}</td>
+            <td>{{sumscore}}</td>
+        </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

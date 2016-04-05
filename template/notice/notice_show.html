@@ -1,0 +1,15 @@
+{% extends "notice/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="inner_content">
+    <div class="header">
+        <h2>{{notice.title}}</h2>
+    </div>
+    <div class="date">
+        <span>{{notice.date|date:"Y-m-d"}}</span>
+    </div>
+    <div class="notice-content">
+        {{notice.content}}
+    </div>
+</div>
+
+{% endblock%}

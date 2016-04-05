@@ -8,4 +8,5 @@ $(".ing-event-select").change(function(){
 function getRank_callback(data){
     $('.score-rank-content').html(data['sumscore_rank_html']);
     $('.round-score-content').html(data['rounds_matchs_html']);
+    $('.top-scorer-content').html(data['player_rank_html']);
 }

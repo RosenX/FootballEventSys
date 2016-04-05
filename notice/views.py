@@ -14,3 +14,10 @@ def noticeView(request):
         'form':form,
     }
     return render(request,"notice/notice_home.html",context)
+
+def showNoticeView(request, noticeId):
+    notice = Notice.objects.get(id=noticeId)
+    context = {
+        'notice': notice,
+    }
+    return render(request, "notice/notice_show.html",context)

@@ -8,3 +8,7 @@ from django.template import RequestContext
 def loginRedirect(request):
 	redirect_url = "/home"
 	return HttpResponseRedirect(redirect_url)
+
+def logoutRedirect(request):
+    redirect_url = ""
+    return HttpResponseRedirect(redirect_url)

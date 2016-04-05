@@ -11,7 +11,8 @@ active
 
 {% block main_content%}
  <div class="main-content">
+    <link rel="stylesheet" href="{{STATIC_URL}}style/notice.css">
     {% block outter_content%}{%endblock%}
-    <script type="text/javascript" src="{{STATIC_URL}}js/notice.js"></script> 
+    <script type="text/javascript" src="{{STATIC_URL}}js/notice.js"></script>
 </div>
 {% endblock%}
