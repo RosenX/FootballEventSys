@@ -4,6 +4,20 @@
             <span class="round-title">第{{forloop.counter}}轮</span>
         </center>
         <table class="matchs-list table table-bordered table-striped">
+            {% ifequal statu 0 %}
+                <tr>
+                    <th class="span4">参赛队</th>
+                    <th class="span4">比赛时间</th>
+                    <th class="span4">裁判</th>
+                </tr>
+                {%for match in matches%}
+                    <tr>
+                        <td class="span4">{{match.teamA}} vs {{match.teamB}}</td>
+                        <td class="span4">{{match.date|date:"Y-m-d"}}</td>
+                        <td class="span4">{{match.referee}}</td>
+                    </tr>
+                {%endfor%}
+            {% endifequal %}
             {% ifequal statu 1 %}
                 <tr>
                     <th class="span4">参赛队</th>

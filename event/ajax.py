@@ -54,7 +54,7 @@ def addNewMatch(request,form,event_id):
     print "hello11"
     if form.is_valid():
         form.save()
-        new_form =MatchAddForm()
+        new_form = MatchAddForm()
         rounds_matchs = getRoundsAndMathchs(request,event)
         rounds_matchs_table = render_to_string("event/widget/rounds_matchs_table.html",
                                                 {"rounds_matchs":rounds_matchs,'form':form,"statu":statu})
