@@ -15,26 +15,50 @@ class Score(models.Model):
     def __unicode__(self):
         return u"%s(%s)"%(self.player,self.match)
 
-class RedCard(models.Model):
-    player = models.ForeignKey(Player,verbose_name=u'球员',blank=False,null=False)
-    match = models.ForeignKey(SingleMatch,verbose_name=u"比赛",blank=False,null=False)
-    reason = models.CharField(verbose_name=u'原因',max_length=100,blank=True,null=True)
+
+class RedCardReason(models.Model):
+    reason = models.CharField(verbose_name = u'红牌原因', max_length = 200, blank=False, null=False)
 
     class Meta:
-        verbose_name = u'红牌'
-        verbose_name_plural = u'红牌'
+        verbose_name = u'红牌原因'
+        verbose_name_plural = u'红牌原因'
 
     def __unicode__(self):
-        return u"%s(%s)"%(self.player,self.match)
+        return u"%s"%self.reason
+
+class YellowCardReason(models.Model):
+    reason = models.CharField(verbose_name = u'黄牌原因', max_length = 200, blank=False, null=False)
+
+    class Meta:
+        verbose_name = u'黄牌原因'
+        verbose_name_plural = u'黄牌原因'
+
+    def __unicode__(self):
+        return u"%s"%self.reason
 
 class YellowCard(models.Model):
     player = models.ForeignKey(Player,verbose_name=u'球员',blank=False,null=False)
     match = models.ForeignKey(SingleMatch,verbose_name=u"比赛",blank=False,null=False)
-    reason = models.CharField(verbose_name=u'原因',max_length=100,blank=True,null=True)
+    reason = models.ForeignKey(YellowCardReason,verbose_name=u'原因',blank=True,null=True)
+    # reason = models.CharField(max_length = 100,verbose_name=u'原因',blank=True,null=True)
+
 
     class Meta:
         verbose_name = u'黄牌'
         verbose_name_plural = u'黄牌'
+
+    def __unicode__(self):
+        return u"%s(%s)"%(self.player,self.match)
+
+class RedCard(models.Model):
+    player = models.ForeignKey(Player,verbose_name=u'球员',blank=False,null=False)
+    match = models.ForeignKey(SingleMatch,verbose_name=u"比赛",blank=False,null=False)
+    reason = models.ForeignKey(RedCardReason, verbose_name=u'原因',blank=True,null=True)
+    # reason = models.CharField(max_length = 100,verbose_name=u'原因',blank=True,null=True)
+
+    class Meta:
+        verbose_name = u'红牌'
+        verbose_name_plural = u'红牌'
 
     def __unicode__(self):
         return u"%s(%s)"%(self.player,self.match)

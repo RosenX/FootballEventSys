@@ -6,6 +6,8 @@ RegisterClass = (
     RedCard,
     YellowCard,
     SumScore,
+    RedCardReason,
+    YellowCardReason,
 )
 for item in RegisterClass:
     admin.site.register(item)

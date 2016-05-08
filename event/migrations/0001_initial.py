@@ -34,8 +34,8 @@ class Migration(SchemaMigration):
             ('date', self.gf('django.db.models.fields.DateField')()),
             ('round_belong', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['event.Schedule'])),
             ('referee', self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True)),
-            ('teamA_score', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('teamB_score', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('teamA_score', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
+            ('teamB_score', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
         ))
         db.send_create_signal('event', ['SingleMatch'])
 
@@ -73,9 +73,9 @@ class Migration(SchemaMigration):
             'referee': ('django.db.models.fields.CharField', [], {'max_length': '30', 'null': 'True', 'blank': 'True'}),
             'round_belong': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['event.Schedule']"}),
             'teamA': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'A_team'", 'to': "orm['team.Team']"}),
-            'teamA_score': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'teamA_score': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'}),
             'teamB': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'B_team'", 'to': "orm['team.Team']"}),
-            'teamB_score': ('django.db.models.fields.IntegerField', [], {'default': '0'})
+            'teamB_score': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'})
         },
         'team.team': {
             'Meta': {'object_name': 'Team'},

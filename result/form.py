@@ -19,7 +19,7 @@ class RedCardAddForm(ModelForm):
         widgets = {
             'player' : forms.Select(attrs={'class':'form-control','label':'球员'}),
             'match' : forms.HiddenInput(attrs={'class':'form-control','label':'比赛'}),
-            'reason' : forms.TextInput(attrs={'class':'form-control','label':'原因'}),
+            'reason' : forms.Select(attrs={'class':'form-control','label':'原因'}),
             # player = models.ForeignKey(Player,verbose_name=u'球员',blank=False,null=False)
             # match = models.ForeignKey(SingleMatch,verbose_name=u"比赛",blank=False,null=False)
             # reason = models.CharField(verbose_name=u'原因',max_length=100,blank=True,null=True)
@@ -31,5 +31,5 @@ class YellowCardAddForm(ModelForm):
         widgets = {
             'player' : forms.Select(attrs={'class':'form-control','label':'球员'}),
             'match' : forms.HiddenInput(attrs={'class':'form-control','label':'比赛'}),
-            'reason' : forms.TextInput(attrs={'class':'form-control','label':'原因'}),
+            'reason' : forms.Select(attrs={'class':'form-control','label':'原因'}),
         }
