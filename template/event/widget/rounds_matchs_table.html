@@ -34,17 +34,24 @@
             {% endifequal %}
             {% ifequal statu 2 %}
                 <tr>
-                    <th class="span3">参赛队</th>
-                    <th class="span3">比赛时间</th>
-                    <th class="span3">裁判</th>
-                    <th class="span3">比分</th>
+                    <th class="span2">参赛队</th>
+                    <th class="span2">比赛时间</th>
+                    <th class="span2">裁判</th>
+                    <th class="span2">比分</th>
+                    <th class="span2">红牌</th>
                 </tr>
                 {%for match in matches%}
                     <tr>
-                        <td class="span3">{{match.teamA}} vs {{match.teamB}}</td>
-                        <td class="span3">{{match.date|date:"Y-m-d"}}</td>
-                        <td class="span3">{{match.referee}}</td>
-                        <td class="span3">{{match.teamA_score}} : {{match.teamB_score}}</td>
+                        <td class="span2">{{match.teamA}} vs {{match.teamB}}</td>
+                        <td class="span2">{{match.date|date:"Y-m-d"}}</td>
+                        <td class="span2">{{match.referee}}</td>
+                        <td class="span2">{{match.teamA_score}} : {{match.teamB_score}}</td>
+                        <td class="span2">
+                            <button class="btn btn-primary check-cards-btn" iid="{{match.id}}"
+                                    data-toggle="modal" data-target ="#card-record-modal">
+                                红黄牌记录
+                            </button>
+                        </td>
                     </tr>
                 {%endfor%}
             {% endifequal %}
@@ -72,6 +79,25 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             <button type="button" class="btn btn-primary" id="match-save" data-dismiss="modal">创建</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="card-record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">红黄牌记录</h4>
+            </div>
+            <div class="modal-body cards-record-table">
+                <!-- {% include "result/widget/card_record.html" %} -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default card-modal-close" data-dismiss="modal">关闭</button>
+            </div>
         </div>
     </div>
 </div>

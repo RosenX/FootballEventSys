@@ -19,7 +19,18 @@ $(document).ready(function(){
         event_id = $(".new-round").attr("iid");
         Dajaxice.event.addNewMatch(addNewMatch_callback,{'form':form,"event_id":event_id});
     });
+
 });
+
+
+$(document).on("click",".check-cards-btn",function(){
+    match_id = $(this).attr("iid");
+    Dajaxice.result.getCards(getCards_callback,{'matchId':match_id});
+});
+
+function getCards_callback(data){
+    $(".cards-record-table").html(data["html"]);
+}
 
 function addNewMatch_callback(data){
     if(data["statu"]==0){

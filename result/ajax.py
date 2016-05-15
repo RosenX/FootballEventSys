@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.utils import simplejson
 from event.models import SingleMatch
 from result.models import Score,RedCard,YellowCard
-from common.views import getTeams
+from common.views import getTeams, judgeStatu
 from result.form import ScoreAddForm,RedCardAddForm,YellowCardAddForm
 
 def getScores(request,match):
@@ -23,7 +23,7 @@ def getScores(request,match):
 @dajaxice_register
 def getCards(request,matchId):
     match = SingleMatch.objects.get(id=matchId)
-    match_cards_table = generateCardRecordHmtl(match)
+    match_cards_table = generateCardRecordHmtl(request, match)
     context = {
         'html' : match_cards_table,
     }
@@ -70,12 +70,15 @@ def addScore(request,form,matchId,which_team):
         context["statu"] = ERROR
     return simplejson.dumps(context)
 
-def generateCardRecordHmtl(match):
+def generateCardRecordHmtl(request, match):
     red_card_list = RedCard.objects.filter(match = match)
     yellow_card_list = YellowCard.objects.filter(match = match)
     red_form = RedCardAddForm()
     yellow_form = YellowCardAddForm()
+    event = match.round_belong.event
+    statu = judgeStatu(request, event)
     context = {
+        'statu': statu,
         'match' : match,
         'red_card_list' : red_card_list,
         'yellow_card_list' : yellow_card_list,
@@ -91,7 +94,7 @@ def addRedCard(request,form):
     if form.is_valid():
         form.save()
         match = form.cleaned_data["match"]
-        match_cards_table = generateCardRecordHmtl(match)
+        match_cards_table = generateCardRecordHmtl(request, match)
         context = {
             'html' : match_cards_table,
         }
@@ -107,7 +110,7 @@ def addYellowCard(request,form):
     if form.is_valid():
         form.save()
         match = form.cleaned_data["match"]
-        match_cards_table = generateCardRecordHmtl(match)
+        match_cards_table = generateCardRecordHmtl(request, match)
         context = {
             'html' : match_cards_table,
         }

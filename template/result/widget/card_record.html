@@ -1,7 +1,9 @@
 <div class="cards_header">
     <h3 class="red_cards_title">
         红牌
+        {% ifequal statu 1 %}
         <button type="button" class="btn red-add-btn" mid="{{match.id}}">增加</button>
+        {% endifequal %}
     </h3>
     <table class="table table-bordered table-striped">
         <tr>
@@ -20,7 +22,9 @@
     <hr>
     <h3 class="red_cards_title">
         黄牌
+        {% ifequal statu 1 %}
         <button type="button" class="btn yellow-add-btn" mid="{{match.id}}">增加</button>
+        {% endifequal %}
     </h3>
     <table class="table table-bordered table-striped">
         <tr>
