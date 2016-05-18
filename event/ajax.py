@@ -1,3 +1,4 @@
+#coding=utf8
 from const import *
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
@@ -25,10 +26,12 @@ def addEvent(request,form):
 @dajaxice_register
 def addNewRound(request,event_id):
     form =MatchAddForm()
+    ## 数据库查询语句
     event = Event.objects.get(id=event_id)
     new_round = Schedule(event=event)
 
     round_number = len(Schedule.objects.filter(event = event))+1
+    ## 数据库修改,赋值
     new_round.round_number = round_number
 
     statu = judgeStatu(request,event)
